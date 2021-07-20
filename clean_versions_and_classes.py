@@ -32,8 +32,9 @@ csv_out.writerow(headers)
 set_of_location_version = set()
 
 for location_array in location_column:
-    print(location_array.split(","))
     for location in location_array.split(","):
+        if location.split(".")[1] != "java":
+            continue
         set_of_location_version.add((location, versions_column[location_column.index(location_array)]))
 
 for loc_ver in list(set_of_location_version):
